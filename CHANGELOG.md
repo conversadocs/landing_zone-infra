@@ -1,3 +1,9 @@
+## 1.0.0 (2024-11-25)
+
+### Features
+
+* initializing the repo ([#1](https://github.com/conversadocs/landing_zone-infra/issues/1)) ([ee56eca](https://github.com/conversadocs/landing_zone-infra/commit/ee56eca12a0a4ccf3da7f730717c5557cf2d8b8f))
+
 ## [1.1.0](https://github.com/conversadocs/project-template/compare/v1.0.0...v1.1.0) (2024-11-18)
 
 ### Features
