@@ -1,0 +1,50 @@
+# Node.js dependencies
+node_modules/
+
+# Bower components
+bower_components/
+
+# Build artifacts
+dist/
+build/
+
+# Logs and temporary files
+logs/
+*.log
+tmp/
+temp/
+
+# Environment variables
+.env
+.env.*
+
+# Local files and IDE settings
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Git files
+.git
+.gitignore
+
+# Python
+__pycache__/
+env/
+venv/
+ENV/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.tfplan*
+.terraform/
+.terraform.lock.hcl
+
+# Exclude sensitive files
+secrets.yml
+credentials.json

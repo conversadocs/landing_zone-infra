@@ -1,0 +1,11 @@
+services:
+  structurizr:
+    container_name: conversadocs-base_infra-structurizr
+    image: structurizr/lite:latest
+    restart: always
+    ports:
+      - '${STRUCTURIZR_PORT:-10000}:8080'
+    volumes:
+      - ./documentation/structurizr:/usr/local/structurizr:rw
+      - ./documentation/README.md:/usr/local/structurizr/documentation/001-readme.md
+      - ./documentation/adrs:/usr/local/structurizr/adrs:rw
