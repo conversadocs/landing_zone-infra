@@ -1,0 +1,27 @@
+formatter: "markdown"
+
+header-from: main.tf
+
+inputs:
+  recursive: true
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+output-values:
+  enabled: false
+
+settings:
+  anchor: true
+  escape: true
+  indent: 2
+  required: true
+
+sort:
+  enabled: true
+  by: name
