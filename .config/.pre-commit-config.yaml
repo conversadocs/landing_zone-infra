@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: check-merge-conflict
         name: Merge conflict protection
-        stages: [commit]
+        stages: [pre-commit]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v3.25.0
     hooks:
@@ -13,8 +13,22 @@ repos:
         stages: [commit-msg]
   - repo: local
     hooks:
+      - id: tflint
+        name: terraform linting
+        stages: [pre-commit]
+        entry: make tf-lint
+        language: system
+  - repo: local
+    hooks:
+      - id: terraform-validate
+        name: terraform validation
+        stages: [pre-commit]
+        entry: make tf-validate
+        language: system
+  - repo: local
+    hooks:
       - id: security-scan
         name: Security standards enforcement
-        stages: [commit]
+        stages: [pre-commit]
         entry: make sec-scan
         language: system

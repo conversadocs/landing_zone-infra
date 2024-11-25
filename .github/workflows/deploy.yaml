@@ -1,0 +1,45 @@
+name: Deploy
+on:
+  release:
+    types:
+      - created
+permissions:
+  contents: write
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.PRIME_AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.PRIME_AWS_SECRET_ACCESS_KEY }}
+jobs:
+  terraform-plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        uses: actions/checkout@v3
+
+      - id: setup-terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+
+      - id: plan-init
+        name: Terraform Plan Init
+        run: cd terraform && terraform init
+
+      - id: plan
+        name: Terraform Plan
+        run: cd terraform && terraform plan -out=.tfplan
+  terraform-apply:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    needs: terraform-plan
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+      - id: apply-init
+        name: Terraform Apply Init
+        run: cd terraform && terraform init
+      - id: apply
+        name: Terraform Apply
+        run: cd terraform && terraform apply ".tfplan"
