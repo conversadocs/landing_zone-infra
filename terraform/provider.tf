@@ -5,7 +5,6 @@ terraform {
     region         = "us-east-1"
     dynamodb_table = "terraform-lock-table"
     encrypt        = true
-    profile        = "cd-prime"
   }
 
   required_version = "1.9.8"
